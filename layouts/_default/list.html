@@ -55,8 +55,14 @@
   {{ end }}
   <h2 class="!my-0 pb-1 font-bold !leading-none">{{ .Title }}</h2>
   <time class="text-sm antialiased opacity-60"
-    >{{ .Date | time.Format ":date_medium" }}</time
+    >on {{ .Date | time.Format ":date_medium" }}</time
   >
+  <span class="mt-2 text-sm antialiased opacity-60">
+  {{ with .Params.categories }}
+    in
+    {{ delimit . ", " }}
+  {{ end }}
+  </span>
   <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
 </section>
 {{ end }}
